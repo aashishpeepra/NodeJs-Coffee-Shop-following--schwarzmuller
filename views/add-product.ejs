@@ -1,0 +1,16 @@
+<%- include("includes/head") %>
+<link href="/css/product.css" rel="stylesheet"/>
+</head>
+<body>
+    <%- include("includes/navigation") %>
+    <main>
+        <form class="product-form" action="/admin/add" method="POST">
+            <div class="input-box">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title"/>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+<%- include("includes/end") %>

@@ -1,0 +1,33 @@
+<%- include("includes/head") %>
+</head>
+<body>
+    <%- include("includes/navigation") %>
+    <main>
+        <% if (prods.length>0){ %>
+        <% for (let product of prods){ %> 
+        <div class="grid">
+            <header class="product-header">
+                <h3>
+                    <%= product.title %>
+                </h3>
+                <div class="product-img-container">
+                    <img src="https://www.slashgear.com/wp-content/uploads/2019/07/coffee_main_envat-1280x720.jpg" alt="Some Random Image" />
+                </div>
+                <div class="product-info">
+                    <h4>
+                        $23.99
+                    </h4>
+                    <p>
+                        Some Random Information about the product
+                    </p>
+                </div>
+
+            </header>
+
+        </div>
+        <% } %>
+        <% } else { %>
+        <h1>No products..</h1>
+        <% } %>
+    </main>
+<%- include("includes/end") %>

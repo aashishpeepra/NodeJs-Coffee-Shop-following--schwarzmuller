@@ -1,0 +1,35 @@
+.input-box label,
+        .input-box input{
+            display: block;
+            width: 100%;
+        }
+        .input-box input{
+            border:0.5px solid #0080ff;
+            font-family: inherit;
+            border-radius:2px;
+            padding:0 2% ;
+        }
+        .input-box{
+            margin:1rem 0;
+        }
+        button{
+            border:2px solid #0080ff;
+            font-family: inherit;
+            background-color: #fff;
+            color:#0080ff;
+            padding:5px 10px;
+            cursor: pointer;
+        }
+        button:hover,
+        button:active{
+            background-color: #0080ff;
+            color:#fff;
+        }
+        .product-form{
+            width:20rem;
+            max-width: 90%;
+            margin:auto;
+        }
+body{
+    overflow-x: hidden;
+}
