@@ -1,30 +1,30 @@
-const fs=require("fs");
-const base=require("../util/path");
-const path=require("path");
-const p=path.join(base,"data","products.json");
+const Cart = require('./cart');
+const db=require("../util/database");
 
-const readProductsFromFile=cb=>{
-        return fs.readFile(p,(err,fileData)=>{
-            if(!err)
-            {
-                return cb(JSON.parse(fileData));
-            }
-            return cb([]);
-        })
-}
-module.exports=class Product{
-    constructor(title){
-        this.title=title;
-    }
-    save(){
-        readProductsFromFile(products=>{
-            products.push(this);
-            fs.writeFile(p,JSON.stringify(products),err=>{
-                console.log("Error in writing to file",err);
-            })
-        })
-    }
-    static fetchAll(cb){
-        readProductsFromFile(cb);
-    }
-}
+module.exports = class Product {
+  constructor(id, title, imageUrl, description, price) {
+    this.id = id;
+    this.title = title;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    this.price = price;
+  }
+
+  save() {
+    return db.execute("INSERT INTO products (title,price,imageUrl,description) VALUES (?,?,?,?)",[
+      this.title,this.price,this.imageUrl,this.description
+    ])
+  }
+
+  static deleteById(id) {
+    return db.execute("DELETE FROM products where products.id = ?",[id]);
+  }
+
+  static fetchAll() {
+    return db.execute("SELECT * FROM products");  
+  }
+
+  static findById(id) {
+    return db.execute("SELECT * FROM products WHERE products.id = ?",[id]);
+  }
+};
